@@ -1,23 +1,35 @@
 'use client'
 import { authClient } from "@/lib/auth-client";
-import { redirect } from "next/navigation";
+import { redirect, useRouter } from "next/navigation";
 // import { redirect } from "next/dist/server/api-utils";
 import { Form, TextField, Label, Input, FieldError, Description, Button } from "react-aria-components";
+import toast from "react-hot-toast";
 
 export default function LoginPage() {
-
+      const router = useRouter();
    const handleLoginSubmit = async(e)=>{
      e.preventDefault();
      const formData = new FormData(e.currentTarget)
        const user = Object.fromEntries(formData.entries());
-       const {data,error} = await authClient.signIn.email({
+       try{
+        const {data,error} = await authClient.signIn.email({
         email:user.email,
         password: user.password
        })
-       if(data){
-        redirect("/")
+        if(error){
+          toast.error(error.message || "Invalid email or password!")
+          return;
+        }
+        if(data){
+          toast.success("Welcome back! Login successful");
+          setTimeout(()=>{
+            router.push("/")
+          },1000)
+        }
+       } catch(err){
+        console.error("Loign error",err);
+        toast.error("Something went wrong. Please try again.");
        }
-        console.log({data,error})
    }
 
   return (
