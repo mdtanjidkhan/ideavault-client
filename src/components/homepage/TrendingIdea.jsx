@@ -1,16 +1,26 @@
+'use client';
 import { ThumbsUp, ArrowUpRight, Bulb, Rocket } from "@gravity-ui/icons";
+import { useRouter } from "next/navigation";
+// import { useRouter } from "next/router";
+import { useEffect, useState } from "react";
 
-const TrendingIdea = async () => {
-    const res = await fetch(`http://localhost:5000/trending-ideas`);
-    const ideas = await res.json();
-    console.log(ideas, 'no ideas')
+const TrendingIdea = () => {
+     const [ideas, setIdeas] = useState([]);
+  const router = useRouter();
+
+  useEffect(() => {
+    fetch("http://localhost:5000/trending-ideas")
+      .then((res) => res.json())
+      .then((data) => setIdeas(data))
+      .catch((err) => console.error(err));
+  }, []);
     return (
         <section className="py-16 bg-zinc-50 dark:bg-zinc-950 transition-colors">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
                 <div className="mb-10 text-center sm:text-left">
                     <h2 className="text-3xl font-bold tracking-tight text-zinc-900 dark:text-white sm:text-4xl">
-                        🔥 Trending Ideas
+                         Trending Ideas
                     </h2>
                     <p className="mt-3 text-lg text-zinc-500 dark:text-zinc-400">
                         Explore the most upvoted and innovative thoughts from our creative community.
@@ -44,7 +54,7 @@ const TrendingIdea = async () => {
 
                             <div>
                                 <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-50 text-blue-700 dark:bg-blue-900/30 dark:text-blue-400">
-                                    {idea.category}
+                                    {idea.category || "General"}
                                 </span>
 
                                 <h3 className="mt-4 text-xl font-semibold text-zinc-900 dark:text-white group-hover:text-blue-500 transition-colors line-clamp-1">
@@ -65,7 +75,7 @@ const TrendingIdea = async () => {
                                 </div>
 
                                 <button
-                                    //   onClick={() => router.push(`/ideas/${idea._id}`)}
+                                      onClick={() => router.push(`/ideas/${idea._id}`)}
                                     className="inline-flex items-center gap-1 text-sm font-medium text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 transition-all active:scale-95"
                                 >
                                     <span>View Details</span>
