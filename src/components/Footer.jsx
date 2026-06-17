@@ -17,8 +17,6 @@ export default function Footer() {
             Share, explore, and cultivate groundbreaking ideas with a global community of innovators. Your vault of endless possibilities.
           </p>
         </div>
-
-        {/* ২ নম্বর কলাম: প্ল্যাটফর্ম লিংকসমূহ */}
         <div className="flex flex-col gap-3">
           <h4 className="font-semibold text-sm tracking-wider uppercase text-default-400">
             Platform
@@ -31,7 +29,6 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* ৩ নম্বর কলাম: কন্টাক্ট ইনফো */}
         <div className="flex flex-col gap-3">
           <h4 className="font-semibold text-sm tracking-wider uppercase text-default-400">
             Contact Info
@@ -41,7 +38,7 @@ export default function Footer() {
               📧 <span>support@ideavault.com</span>
             </p>
             <p className="flex items-center gap-2">
-              📍 <span>Sirajganj, Bangladesh</span>
+               <span>Sirajganj, Bangladesh</span>
             </p>
             <p className="text-xs text-default-400 mt-1">
               Available: Mon - Fri, 9AM - 6PM
@@ -49,7 +46,6 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* ৪ নম্বর কলাম: সোশাল লিংকসমূহ */}
         <div className="flex flex-col gap-3">
           <h4 className="font-semibold text-sm tracking-wider uppercase text-default-400">
             Follow Us
@@ -63,20 +59,19 @@ export default function Footer() {
               <LogoFacebook></LogoFacebook>
             </Button>
             <Button isIconOnly variant="flat" size="sm" color="primary" className="text-lg">
-              🐦
+              
             </Button>
             <Button isIconOnly variant="flat" size="sm" color="primary" className="text-lg">
-              💻
+              
             </Button>
             <Button isIconOnly variant="flat" size="sm" color="primary" className="text-lg">
-              📸
+              
             </Button>
           </div>
         </div>
 
       </div>
 
-      {/* 📜 নিচের পার্ট: কপিরাইট এবং থিম লাইন */}
       <div className="max-w-7xl mx-auto border-t border-divider pt-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-default-400">
         <p>
           &copy; {new Date().getFullYear()} IdeaVault. All rights reserved.
