@@ -44,7 +44,7 @@ const TrendingIdea = async () => {
 
                             <div>
                                 <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-50 text-blue-700 dark:bg-blue-900/30 dark:text-blue-400">
-                                    {idea.category || "General"}
+                                    {idea.category}
                                 </span>
 
                                 <h3 className="mt-4 text-xl font-semibold text-zinc-900 dark:text-white group-hover:text-blue-500 transition-colors line-clamp-1">
