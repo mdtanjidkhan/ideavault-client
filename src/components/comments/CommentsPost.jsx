@@ -23,9 +23,6 @@ const CommentsPost = () => {
         e.preventDefault();
         const formData = new FormData(e.currentTarget)
         const commentData = Object.fromEntries(formData.entries());
-        //  console.log("comment data ", commentData)
-    //   const actualCommentText = commentData.comments;
-    //    if (!actualCommentText || !actualCommentText.trim()) return;
         const comment = {
             name: user?.name,
             email: user?.email,

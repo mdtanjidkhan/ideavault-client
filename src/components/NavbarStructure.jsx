@@ -79,7 +79,7 @@ const NavbarStructure = () => {
               >
 
                 <Avatar>
-                  <Avatar.Image alt="John Doe" src={session?.image
+                  <Avatar.Image alt="John Doe" src={session?.user.image
                   } />
                   <Avatar.Fallback >{user.name.charAt(0)}</Avatar.Fallback>
                 </Avatar>

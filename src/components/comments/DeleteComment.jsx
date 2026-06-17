@@ -2,8 +2,19 @@
 
 import {AlertDialog, Button} from "@heroui/react";
 
+const DeleteComment = ({comment}) => {
+     const {_id} = comment;
+  const handleDelete = async()=>{
+     const res = await fetch(`http://localhost:5000/comments/${_id}`,{
+        method:"DELETE",
+        headers:{
+          'content-type':'application/json'
+        }
+     })
+     const data = await res.json();
+  }
 
-const DeleteComment = () => {
+
     return (
         <div>
             <AlertDialog>
@@ -26,7 +37,7 @@ const DeleteComment = () => {
               <Button slot="close" variant="tertiary">
                 Cancel
               </Button>
-              <Button slot="close" variant="danger">
+              <Button onClick={handleDelete} slot="close" variant="danger">
                 Delete Project
               </Button>
             </AlertDialog.Footer>

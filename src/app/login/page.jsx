@@ -30,6 +30,18 @@ export default function LoginPage() {
         console.error("Loign error",err);
         toast.error("Something went wrong. Please try again.");
        }
+   }  
+   const handleGoogleLogin = async() =>{
+      try{
+        await authClient.signIn.social({
+        provider: "google",
+        callbackURL:"/"
+      })
+       toast.success("Redirecting to Google...")
+      } catch(err){
+        console.error("Google login error:", err);
+      toast.error("Google login failed. Try again!");
+      }
    }
 
   return (
@@ -117,7 +129,7 @@ export default function LoginPage() {
           </span>
           <div className="flex-grow border-t border-zinc-200 dark:border-zinc-800"></div>
         </div>
-        <Button
+        <Button onClick={handleGoogleLogin}
           className="w-full h-11 inline-flex items-center justify-center gap-2.5 rounded-xl border border-zinc-300 dark:border-zinc-700 bg-white dark:bg-zinc-800 text-sm font-bold text-zinc-700 dark:text-zinc-200 hover:bg-zinc-50 dark:hover:bg-zinc-700/50 shadow-sm active:scale-98 transition-all cursor-pointer"
         >
           <svg className="w-5 h-5" viewBox="0 0 24 24">

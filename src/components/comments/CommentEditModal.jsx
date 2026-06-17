@@ -1,12 +1,13 @@
 "use client";
 import {Envelope, Pencil} from "@gravity-ui/icons";
-import {Button, Input, Label, Modal, Surface, TextField} from "@heroui/react";
-// import { useState } from "react";
+import {Button, Modal,Surface} from "@heroui/react";
+import toast from "react-hot-toast";
+
+
 
 const CommentEditModal = ({comment}) => {
     const {_id} = comment;
     console.log('id yes', _id)
-    // const [comments, setComments] = useState([]);
   const updateSubmit = async(e)=>{
       e.preventDefault();
       const formData = new FormData(e.currentTarget)
@@ -23,7 +24,9 @@ const CommentEditModal = ({comment}) => {
       })
       const data = await res.json();
       console.log('pacth data ', data)
-     
+      if (data.modifiedCount > 0 || data.acknowledged) { 
+      toast.success("Comment updated instantly!");
+    }
   }
 
     return (
@@ -49,7 +52,7 @@ const CommentEditModal = ({comment}) => {
                     <div className="relative">
                     <textarea
                         rows="3"
-                        name="comments"
+                        name="text"
                         defaultValue={comment.text}
                         required
                         placeholder="Share your feedback, suggestions, or ask a question about this idea..."

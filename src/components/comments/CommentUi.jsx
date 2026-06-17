@@ -29,7 +29,7 @@ const CommentUi = ({comments}) => {
             <div className="flex items-center gap-2 text-xs font-semibold">
               <CommentEditModal comment={comment}></CommentEditModal>
               <span className="text-zinc-300 dark:text-zinc-700">|</span>
-              <DeleteComment></DeleteComment>
+              <DeleteComment comment={comment}></DeleteComment>
             </div>
           </div>
           <p className="text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed pl-9">
