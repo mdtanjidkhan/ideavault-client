@@ -3,20 +3,30 @@ import { Form, TextField, Label, Input, FieldError, Button } from "react-aria-co
 // import { Check } from "lucide-react"; 
 import { Description } from "@heroui/react";
 import { authClient } from "@/lib/auth-client";
+import toast from "react-hot-toast";
+import { useRouter } from "next/navigation";
 
 export default function RegisterPage() {
-
+     const router = useRouter();
     const onSubmit = async(e)=>{
      e.preventDefault();
      const formData = new FormData(e.currentTarget)
        const user = Object.fromEntries(formData.entries());
        console.log(user,'data users')
-       const {data,error} = await authClient.signUp.email({
+       const {data, error} = await authClient.signUp.email({
          name:user.name,
          email: user.email,
          image:user.image,
          password:user.password
        })
+       if(error){
+        toast.error(error.message || "Something went wrong!")
+        return;
+       }
+       if(data || !error){
+        toast.success("Account created successfully! Welcome aboard");
+        router.push("/login")
+       }
     }
   return (
     <div className="min-h-screen bg-zinc-50 dark:bg-zinc-950 flex items-center justify-center p-4 transition-colors duration-300">
