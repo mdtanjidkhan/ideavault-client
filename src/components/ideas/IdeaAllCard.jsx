@@ -23,7 +23,7 @@ const IdeaAllCard = ({user}) => {
         </div>
         <div className="p-5 sm:p-6 flex flex-col gap-3">
           <div className="flex justify-between items-center text-xs font-medium text-zinc-400 dark:text-zinc-500">
-            <span className="flex items-center gap-1"><SlCalender /> {user.createdAt ? new Date.toLocaleDateString() : "N/A"}</span>
+            <span className="flex items-center gap-1"><SlCalender /></span>
             <span className="text-emerald-600 dark:text-emerald-400 font-bold bg-emerald-500/10 dark:bg-emerald-500/5 px-2 py-0.5 rounded-md">
               Est. Budget: {user.budget || "N/A"}
             </span>

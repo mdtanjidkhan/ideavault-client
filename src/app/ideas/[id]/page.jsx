@@ -1,13 +1,23 @@
 import CommentsPost from "@/components/comments/CommentsPost";
+import { auth } from "@/lib/auth";
+import { headers } from "next/headers";
 import Link from "next/link";
 
 
 const IdeaDetailsPage = async ({ params }) => {
   const { id } = await params;
-  const res = await fetch(`http://localhost:5000/users/${id}`)
+  const {token }= await auth.api.getToken({
+     headers: await headers()
+  })
+  // console.log(token);
+  const res = await fetch(`http://localhost:5000/users/${id}`,{
+    headers:{
+      authorization: `Bearer ${token}`
+    }
+  })
   const users = await res.json();
-  // console.log(users)
-  // console.log('id data', id);
+  console.log(users)
+  console.log('id data', id);
   return (
     <div className=" bg-zinc-50 dark:bg-zinc-950 text-zinc-900 dark:text-zinc-50 py-12 px-4 sm:px-6 lg:px-8 transition-colors duration-300">
       <div className="max-w-5xl mx-auto space-y-10">

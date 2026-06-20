@@ -1,14 +1,13 @@
 import Link from "next/link";
 import { Button } from "@heroui/react";
 import { LogoFacebook } from "@gravity-ui/icons";
+import { ImInstagram } from "react-icons/im";
+import { BsGithub, BsLinkedin } from "react-icons/bs";
 
 export default function Footer() {
   return (
     <footer className="w-full bg-background border-t border-divider py-12 px-6 md:px-12 lg:px-16 mt-auto">
-      
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-10">
-        
-   
         <div className="flex flex-col gap-3">
           <Link href="/" className="font-bold text-2xl text-primary tracking-wide">
             IdeaVault
@@ -35,7 +34,7 @@ export default function Footer() {
           </h4>
           <div className="flex flex-col gap-2 font-medium text-sm text-default-600">
             <p className="flex items-center gap-2">
-              📧 <span>support@ideavault.com</span>
+               <span>support@ideavault.com</span>
             </p>
             <p className="flex items-center gap-2">
                <span>Sirajganj, Bangladesh</span>
@@ -45,7 +44,6 @@ export default function Footer() {
             </p>
           </div>
         </div>
-
         <div className="flex flex-col gap-3">
           <h4 className="font-semibold text-sm tracking-wider uppercase text-default-400">
             Follow Us
@@ -53,19 +51,18 @@ export default function Footer() {
           <p className="text-sm text-default-500 mb-1">
             Stay connected with our latest updates.
           </p>
-          
           <div className="flex items-center gap-2">
-            <Button isIconOnly variant="flat" size="sm" color="primary" className="text-lg">
+            <Button isIconOnly variant="flat" size="md" color="primary" className="text-lg">
               <LogoFacebook></LogoFacebook>
             </Button>
-            <Button isIconOnly variant="flat" size="sm" color="primary" className="text-lg">
-              
+            <Button isIconOnly variant="flat" size="md" color="primary" className="text-lg">
+              <BsGithub></BsGithub>
             </Button>
-            <Button isIconOnly variant="flat" size="sm" color="primary" className="text-lg">
-              
+            <Button isIconOnly variant="flat" size="md" color="primary" className="text-lg">
+              <BsLinkedin></BsLinkedin>
             </Button>
-            <Button isIconOnly variant="flat" size="sm" color="primary" className="text-lg">
-              
+            <Button isIconOnly variant="flat" size="md" color="primary" className="text-lg">
+              <ImInstagram></ImInstagram>
             </Button>
           </div>
         </div>

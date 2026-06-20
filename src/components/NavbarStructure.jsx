@@ -68,8 +68,8 @@ const NavbarStructure = () => {
             <li><Link href="/my-interactions" className={pathName === "/my-interactions" ? "text-blue-500" : ""}>My Interactions</Link></li>
           </>)}
         </ul>
-        <div className=" items-center gap-4 md:flex">
-          <ThemeToggle></ThemeToggle>
+        <div className=" items-center gap-4 flex">
+          {/* <ThemeToggle></ThemeToggle> */}
 
           {user ? (
             <div className="relative">
@@ -107,7 +107,6 @@ const NavbarStructure = () => {
                     >
                       Logout
                     </button>
-
                   </div>
                 </>
               )}
@@ -115,11 +114,12 @@ const NavbarStructure = () => {
           ) : (
             <>
               <div className="mx-3 flex gap-3 items-center">
-                <Link href="/login" className="text-foreground font-medium text-sm hover:text-blue-500">Login</Link>
-              <Link href="/signup"><Button size="sm" color="primary" className="rounded-md font-medium hover:text-black">Sign Up</Button></Link>
+                <Link href="/login" className="text-foreground font-medium text-sm hover:text-blue-500 hidden sm:block">Login</Link>
+              <Link href="/signup"><Button size="sm" color="primary" className="rounded-md font-medium hover:text-black hidden sm:block">Sign Up</Button></Link>
               </div>
             </>
           )}
+          <ThemeToggle></ThemeToggle>
         </div>
       </header>
       {isMenuOpen && (
@@ -132,7 +132,12 @@ const NavbarStructure = () => {
             <li><Link href="/my-ideas" className={pathName === "/my-ideas" ? "text-blue-500" : ""}>My Ideas</Link></li>
             <li><Link href="/my-interactions" className={pathName === "/my-interactions" ? "text-blue-500" : ""}>My Interactions</Link></li>
           </>)}
-
+             {user ? ( <Button variant="danger"
+                      onClick={async () => await authClient.signOut()}
+                      className=" w-full items-center  text-sm font-bold rounded-md text-white hover:bg-red-500/10 transition-all cursor-pointer text-left md:hidden"
+                    >
+                      Logout
+                    </Button>):( <Link href="/login" className="text-foreground font-medium text-sm hover:text-blue-500 w-full md:hidden"><Button className={'w-full rounded-md bg-black'}>Login</Button></Link>)}
           </ul>
         </div>
       )}

@@ -1,5 +1,6 @@
 'use client'
 import IdeaAllCard from "@/components/ideas/IdeaAllCard";
+import { authClient } from "@/lib/auth-client";
 import { Button } from "@heroui/react";
 import { useEffect, useState } from "react";
 import { FaSearch } from "react-icons/fa";
@@ -15,8 +16,7 @@ const IdeaPage = () => {
 
   const loadUsers = async () => {
 
-    let url = "http://localhost:5000/users";
-
+    let url = (`http://localhost:5000/users`);
     const queryParams = [];
 
     // category
@@ -34,13 +34,16 @@ const IdeaPage = () => {
     if (queryParams.length > 0) {
       url += `?${queryParams.join("&")}`;
     }
-
-    const res = await fetch(url);
+    const { data: tokenData } = await authClient.token();
+    const res = await fetch(url, {
+      headers: {
+        authorization: `Bearer ${tokenData?.token}`
+      }
+    });
     const data = await res.json();
-
     setUsers(data);
+    console.log(data)
   };
-
 
   return (
     <div>
@@ -68,17 +71,16 @@ const IdeaPage = () => {
                   onChange={(e) => setSearch(e.target.value)}
                   className="w-full h-11 pl-10 pr-4 rounded-xl border border-zinc-300 dark:border-zinc-700 bg-transparent text-sm text-zinc-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all"
                 />
-              
+
                 <span className="absolute left-3.5 top-3 text-zinc-400 dark:text-zinc-500 text-sm"><FaSearch />
-                            </span>
+                </span>
               </div>
-              <Button  onClick={loadUsers}
+              <Button onClick={loadUsers}
                 type="button"
                 className="h-11 px-5 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-semibold text-sm shadow-md shadow-blue-500/10 hover:shadow-blue-500/20 active:scale-95 transition-all flex items-center justify-center gap-1.5 whitespace-nowrap"
               >
                 <span>Search</span>
               </Button>
-
             </div>
             <div className="">
               <select
@@ -110,7 +112,6 @@ const IdeaPage = () => {
               </div>
             )
           }
-
           {/*  */}
         </div>
       </div>

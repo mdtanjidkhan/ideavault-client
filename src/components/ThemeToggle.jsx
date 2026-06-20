@@ -12,7 +12,7 @@ const ThemeToggle = () => {
 
     // <button onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
     return (
-        <Switch className={'hidden md:block'} onChange={()=> setTheme(theme==="dark"? "light": "dark")}>
+        <Switch className={''} onChange={()=> setTheme(theme==="dark"? "light": "dark")}>
       {({isSelected}) => (
         <>
           <Switch.Control

@@ -13,10 +13,10 @@ const CommentsPost = () => {
     const [comments, setComments] = useState([])
     // GET comments (load first time)
     useEffect(() => {
-        fetch("http://localhost:5000/comments")
+            fetch(`http://localhost:5000/comments`)
             .then(res => res.json())
-            .then(userComment => setComments(userComment));
-            
+            .then(userComment => setComments(userComment));   
+        
     }, []);
 
     const handleAddComment = async (e) => {
@@ -31,11 +31,14 @@ const CommentsPost = () => {
         }
         console.log(comment, 'sestion and comment data')
          if(!commentData.comments?.trim()) return;
+         
         try {
+            const {data:tokenData} = await authClient.token()
             const res = await fetch(`http://localhost:5000/comments`, {
                 method: "POST",
                 headers: {
                     'content-type': 'application/json',
+                    authorization: `Bearer ${tokenData?.token}`
                 },
                 body: JSON.stringify(comment)
             });
@@ -80,7 +83,7 @@ const CommentsPost = () => {
                 </div>
             </form>
             {/* comments ui */}
-                <CommentUi comments={comments}></CommentUi>
+                <CommentUi comments={comments} setComments={setComments}></CommentUi>
         </div>
     );
 };

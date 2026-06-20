@@ -1,12 +1,18 @@
 'use client'
 
+import { authClient } from "@/lib/auth-client";
+import { useRouter } from "next/navigation";
+import toast from "react-hot-toast";
+
 const AddIdeaForm = () => {
-     
+    const { data: session } = authClient.useSession();
+     const router = useRouter();
      const handleSubmit = async(e)=>{
         e.preventDefault();
-
         const formData = new FormData(e.currentTarget)
         const ideaData = Object.fromEntries(formData.entries());
+        ideaData.userEmail = session?.user?.email; 
+         ideaData.createdAt = new Date();
         const tagsString = ideaData.tags; 
   if (tagsString && typeof tagsString === "string") {
     ideaData.tags = tagsString.split(",").map(tag => tag.trim());
@@ -14,20 +20,22 @@ const AddIdeaForm = () => {
     ideaData.tags = []; 
   }
         console.log("Submitted Idea Data", ideaData);
-        
-        const res = await fetch('http://localhost:5000/users',{
+        const {data:tokenData} = await authClient.token()
+        const res = await fetch(`http://localhost:5000/users`,{
             method:'POST',
             headers:{
-                'content-type': 'application/json'
+                'content-type': 'application/json',
+                authorization: `Bearer ${tokenData?.token}`,
             },
             body:JSON.stringify(ideaData)
         });
         const data = await res.json();
         console.log(data);
-
+       if (data) {
+      toast.success("Idea Added Successfully!");
+      router.push("/my-ideas"); 
+    }
      }
-
-
 
     const categories = ["Tech", "Health", "AI", "Education", "Finance", "Environment"];
     return (
