@@ -40,8 +40,7 @@ const DeleteComment = ({ comment, setComments }) => {
               </AlertDialog.Header>
               <AlertDialog.Body>
                 <p>
-                  This will permanently delete <strong>My Awesome Project</strong> and all of its
-                  data. .
+                  Are you sure you want to delete this startup idea? This will permanently remove the idea and all of its comments from IdeaVault.
                 </p>
               </AlertDialog.Body>
               <AlertDialog.Footer>
