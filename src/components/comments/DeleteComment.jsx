@@ -39,7 +39,7 @@ const DeleteComment = ({ comment, setComments }) => {
                 <AlertDialog.Heading>Delete project permanently?</AlertDialog.Heading>
               </AlertDialog.Header>
               <AlertDialog.Body>
-                <p>
+                <p className="text-gray-500 text-xs">
                   Are you sure you want to delete this startup idea? This will permanently remove the idea and all of its comments from IdeaVault.
                 </p>
               </AlertDialog.Body>
