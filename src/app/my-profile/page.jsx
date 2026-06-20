@@ -25,7 +25,7 @@ const MyProfilePage = () => {
     const handleUpdateProfile = async (e) => {
         e.preventDefault();
         const {data:tokenData} = await authClient.token()
-        const res = await fetch(`http://localhost:5000/user-update/${session?.user?.email}`, {
+        const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/user-update/${session?.user?.email}`, {
             method: "PATCH",
             headers: { "content-type": "application/json",
                 authorization: `Bearer ${tokenData?.token}`,

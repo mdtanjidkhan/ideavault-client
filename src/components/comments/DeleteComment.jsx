@@ -7,7 +7,7 @@ const DeleteComment = ({ comment, setComments }) => {
   const { _id } = comment;
   const handleDelete = async () => {
     const {data:tokenData} = await authClient.token()
-    const res = await fetch(`http://localhost:5000/comments/${_id}`, {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/comments/${_id}`, {
       method: "DELETE",
       headers: {
         'content-type': 'application/json',

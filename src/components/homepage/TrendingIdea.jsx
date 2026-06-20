@@ -7,23 +7,23 @@ import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
 const TrendingIdea = () => {
-     const [ideas, setIdeas] = useState([]);
-  const router = useRouter();
+    const [ideas, setIdeas] = useState([]);
+    const router = useRouter();
 
-  useEffect(() => {
-    fetch(`http://localhost:5000/trending-ideas`)
-      .then((res) => res.json())
-      .then((data) => setIdeas(data))
-      .catch((err) => console.error(err));
-  }, []);
- 
+    useEffect(() => {
+        fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/trending-ideas`)
+            .then((res) => res.json())
+            .then((data) => setIdeas(data))
+            .catch((err) => console.error(err));
+    }, []);
+
     return (
         <section className="py-16 bg-zinc-50 dark:bg-zinc-950 transition-colors">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
                 <div className="mb-10 text-center sm:text-left">
                     <h2 className="text-3xl font-bold tracking-tight text-zinc-900 dark:text-white sm:text-4xl">
-                         Trending Ideas
+                        Trending Ideas
                     </h2>
                     <p className="mt-3 text-lg text-zinc-500 dark:text-zinc-400">
                         Explore the most upvoted and innovative thoughts from our creative community.
@@ -72,20 +72,20 @@ const TrendingIdea = () => {
 
 
                             <div className="mt-6 pt-4 border-t border-zinc-100 dark:border-zinc-800 flex items-center justify-between">
-                                <div  className="flex items-center gap-1.5 text-zinc-600 dark:text-zinc-400">
+                                <div className="flex items-center gap-1.5 text-zinc-600 dark:text-zinc-400">
                                     <ThumbsUp className="text-blue-500" style={{ width: '16px', height: '16px' }} />
                                     <span className="text-sm font-medium">0 votes </span>
                                 </div>
-                                
+
                                 <button
-                                     
-                                      onClick={() => router.push(`/ideas/${idea._id}`)}
+
+                                    onClick={() => router.push(`/ideas/${idea._id}`)}
                                     className="inline-flex items-center gap-1 text-sm font-medium text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 transition-all active:scale-95"
                                 >
                                     <span>View Details</span>
                                     <ArrowUpRight className="transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" style={{ width: '14px', height: '14px' }} />
                                 </button>
-                                 
+
                             </div>
                         </div>
                     ))}

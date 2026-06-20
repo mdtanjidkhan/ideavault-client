@@ -13,7 +13,7 @@ const CommentsPost = () => {
     const [comments, setComments] = useState([])
     // GET comments (load first time)
     useEffect(() => {
-            fetch(`http://localhost:5000/comments`)
+            fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/comments`)
             .then(res => res.json())
             .then(userComment => setComments(userComment));   
         
@@ -34,7 +34,7 @@ const CommentsPost = () => {
          
         try {
             const {data:tokenData} = await authClient.token()
-            const res = await fetch(`http://localhost:5000/comments`, {
+            const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/comments`, {
                 method: "POST",
                 headers: {
                     'content-type': 'application/json',

@@ -1,5 +1,5 @@
 
-import { LuUserPlus, LuLightbulb, LuChevronRight } from "react-icons/lu"; // 🎯 রিয়্যাক্ট আইকনস সোনা
+import { LuUserPlus, LuLightbulb, LuChevronRight } from "react-icons/lu"; 
 
 const HowItWorks = () => {
   const steps = [

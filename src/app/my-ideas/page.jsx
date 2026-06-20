@@ -21,7 +21,7 @@ const MyIdeasPage = () => {
     try {
       setLoading(true);
       const { data: tokenData } = await authClient.token(); 
-      const res = await fetch(`http://localhost:5000/my-ideas/${loggedInUserEmail}`, {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/my-ideas/${loggedInUserEmail}`, {
         headers: {
           "Authorization": `Bearer ${tokenData?.token}` 
         }
@@ -48,7 +48,7 @@ const MyIdeasPage = () => {
   }, [loggedInUserEmail]);
   const handleDeleteIdea = async (id) => {
      const {data:tokenData} = await authClient.token();
-    const res = await fetch(`http://localhost:5000/ideas/${id}`, {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/ideas/${id}`, {
       method: "DELETE",
       headers: { 'content-type': 'application/json',
         authorization: `Bearer ${tokenData?.token}`,

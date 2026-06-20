@@ -16,7 +16,7 @@ const IdeaPage = () => {
 
   const loadUsers = async () => {
 
-    let url = (`http://localhost:5000/users`);
+    let url = (`${process.env.NEXT_PUBLIC_SERVER_URL}/users`);
     const queryParams = [];
 
     // category

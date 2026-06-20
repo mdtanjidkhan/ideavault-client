@@ -12,7 +12,7 @@ const MyInterractions = () => {
       const userEmail = session?.user?.email;
        useEffect(()=>{
         if (userEmail) {
-      fetch(`http://localhost:5000/my-interactions/${userEmail}`)
+      fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/my-interactions/${userEmail}`)
         .then((res) => res.json())
         .then((data) => {
           setMyInterractions(data);
