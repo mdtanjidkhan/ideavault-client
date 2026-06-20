@@ -41,7 +41,7 @@ const DeleteComment = ({ comment, setComments }) => {
               <AlertDialog.Body>
                 <p>
                   This will permanently delete <strong>My Awesome Project</strong> and all of its
-                  data. This action cannot be undone.
+                  data. .
                 </p>
               </AlertDialog.Body>
               <AlertDialog.Footer>
