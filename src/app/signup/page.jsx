@@ -50,7 +50,7 @@ export default function RegisterPage() {
             Create Account
           </h2>
           <p className="text-center font-medium text-sm text-zinc-400 dark:text-zinc-500">
-            Start your adventure with Wanderlust
+            
           </p>
         </div>
         <div className="bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-3xl p-6 md:p-8 shadow-xl space-y-6">

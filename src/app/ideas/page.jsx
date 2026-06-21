@@ -34,12 +34,8 @@ const IdeaPage = () => {
     if (queryParams.length > 0) {
       url += `?${queryParams.join("&")}`;
     }
-    const { data: tokenData } = await authClient.token();
-    const res = await fetch(url, {
-      headers: {
-        authorization: `Bearer ${tokenData?.token}`
-      }
-    });
+    // const { data: tokenData } = await authClient.token();
+    const res = await fetch(url);
     const data = await res.json();
     setUsers(data);
     console.log(data)

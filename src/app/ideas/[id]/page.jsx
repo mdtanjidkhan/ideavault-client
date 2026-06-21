@@ -2,6 +2,7 @@ import CommentsPost from "@/components/comments/CommentsPost";
 import { auth } from "@/lib/auth";
 import { headers } from "next/headers";
 import Link from "next/link";
+import { FaArrowLeft } from "react-icons/fa";
 
 
 const IdeaDetailsPage = async ({ params }) => {
@@ -25,7 +26,7 @@ const IdeaDetailsPage = async ({ params }) => {
           href="/ideas"
           className="inline-flex items-center gap-2 text-sm font-semibold text-zinc-500 dark:text-zinc-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
         >
-          ← Back to All Ideas
+         <FaArrowLeft />  Back to All Ideas
         </Link>
         <div className="bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-3xl shadow-sm overflow-hidden">
           <div className="relative h-64 md:h-96 w-full bg-zinc-100 dark:bg-zinc-800">
@@ -50,7 +51,7 @@ const IdeaDetailsPage = async ({ params }) => {
             </div>
 
             <div className="flex gap-4 text-xs font-medium text-zinc-400 dark:text-zinc-500">
-              <span>📅 Created: {new Date(users.createdAt).toLocaleDateString()}</span>
+              <span>  Created: {new Date(users.createdAt).toLocaleDateString()}</span>
             </div>
 
             <div className="space-y-2">
@@ -65,6 +66,10 @@ const IdeaDetailsPage = async ({ params }) => {
               <div>
                 <h3 className="font-bold md:text-xl">proposedSolution:</h3>
                 <p className="text-zinc-600 dark:text-zinc-400 text-sm md:text-base leading-relaxed">{users.proposedSolution}</p>
+              </div>
+              <div>
+                <h3 className="font-bold md:text-xl">DetailedDesc:</h3>
+                <p className="text-zinc-600 dark:text-zinc-400 text-sm md:text-base leading-relaxed">{users.detailedDesc}</p>
               </div>
 
             </div>
